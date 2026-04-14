@@ -1,0 +1,11 @@
+{
+  "name": "jorge-fabregat",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page de Jorge Fabregat — asesor patrimonial independiente.",
+  "scripts": {
+    "start": "npx serve public -p 3000",
+    "preview": "npx serve public -p 3000"
+  },
+  "license": "UNLICENSED"
+}
