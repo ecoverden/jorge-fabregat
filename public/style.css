@@ -288,15 +288,6 @@ p + p {
   gap: var(--stack-lg);
 }
 
-.hp {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-}
-
 .field {
   display: flex;
   flex-direction: column;
@@ -400,8 +391,15 @@ p + p {
   cursor: default;
 }
 
+.form-hint {
+  margin: calc(var(--stack-sm) * -1) 0 0;
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  opacity: 0.75;
+}
+
 .form-status {
-  min-height: 1.5em;
+  min-height: 1.25em;
   margin: 0;
   font-size: var(--fs-sm);
   color: var(--muted);
@@ -416,32 +414,20 @@ p + p {
   color: var(--fg);
 }
 
-/* ---------- Contacto alternativo ---------- */
-.alt-contact {
-  margin-top: var(--stack-lg);
-  font-size: var(--fs-sm);
-  color: var(--muted);
-}
-
-.email-link-small {
-  color: var(--muted);
-  text-decoration: underline;
-  text-decoration-color: var(--rule);
-  text-underline-offset: 3px;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
-}
-
-.email-link-small:hover,
-.email-link-small:focus-visible {
-  color: var(--accent);
-  text-decoration-color: var(--accent);
-  outline: none;
-}
-
 .copyright {
   margin-top: calc(var(--stack-lg) * 2);
   font-size: var(--fs-sm);
   color: var(--muted);
+}
+
+.legal-note {
+  margin-top: var(--stack-sm);
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 56ch;
+  opacity: 0.7;
+  letter-spacing: 0.002em;
 }
 
 .legal {

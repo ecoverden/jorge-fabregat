@@ -25,91 +25,56 @@
     });
   }
 
-  /* ---------- Contact form ---------- */
+  /* ---------- Contact form (mailto) ---------- */
   var form = document.getElementById("contact-form");
   if (!form) return;
 
   var status = form.querySelector(".form-status");
-  var submit = form.querySelector(".submit");
-  var submitLabel = submit ? submit.textContent : "Enviar mensaje";
-  var ENDPOINT = "https://formsubmit.co/ajax/Jorge.fabregatb@gmail.com";
+  var nameEl = form.querySelector("#name");
+  var messageEl = form.querySelector("#message");
+  var RECIPIENT = "Jorge.fabregatb@gmail.com";
 
   function setStatus(text, type) {
     if (!status) return;
-    status.textContent = text;
+    status.textContent = text || "";
     status.className = "form-status" + (type ? " is-" + type : "");
-  }
-
-  function validEmail(value) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   }
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    var honey = form.querySelector('input[name="_honey"]');
-    if (honey && honey.value) return;
+    var name = nameEl.value.trim();
+    var message = messageEl.value.trim();
 
-    var name = form.querySelector("#name");
-    var email = form.querySelector("#email");
-    var message = form.querySelector("#message");
-
-    if (!name.value.trim() || !message.value.trim()) {
-      setStatus("Completa tu nombre y el mensaje, por favor.", "error");
+    if (!message) {
+      setStatus("Escribe un mensaje antes de enviar.", "error");
+      messageEl.focus();
       return;
     }
 
-    if (!validEmail(email.value.trim())) {
-      setStatus("Revisa tu email, por favor.", "error");
-      email.focus();
-      return;
+    var subject = name
+      ? "Mensaje de " + name
+      : "Mensaje desde jorgefabregat.vercel.app";
+
+    var bodyLines = [];
+    if (name) {
+      bodyLines.push("Hola Jorge,");
+      bodyLines.push("");
+      bodyLines.push("Soy " + name + ".");
+      bodyLines.push("");
     }
+    bodyLines.push(message);
+    var body = bodyLines.join("\n");
 
-    if (submit) {
-      submit.disabled = true;
-      submit.textContent = "Enviando…";
-    }
-    setStatus("");
+    var mailto =
+      "mailto:" +
+      RECIPIENT +
+      "?subject=" +
+      encodeURIComponent(subject) +
+      "&body=" +
+      encodeURIComponent(body);
 
-    var payload = {
-      name: name.value.trim(),
-      email: email.value.trim(),
-      message: message.value.trim(),
-      _subject: "Nuevo mensaje desde jorgefabregat.vercel.app",
-      _template: "table",
-      _captcha: "false"
-    };
-
-    fetch(ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify(payload)
-    })
-      .then(function (res) {
-        return res.json().catch(function () {
-          return {};
-        });
-      })
-      .then(function (data) {
-        var ok = data && (data.success === true || data.success === "true");
-        if (!ok) throw new Error("send_failed");
-        form.reset();
-        setStatus("Mensaje enviado. Te responderé personalmente en breve.", "success");
-      })
-      .catch(function () {
-        setStatus(
-          "No se ha podido enviar. Escríbeme directamente a Jorge.fabregatb@gmail.com",
-          "error"
-        );
-      })
-      .then(function () {
-        if (submit) {
-          submit.disabled = false;
-          submit.textContent = submitLabel;
-        }
-      });
+    setStatus("Abriendo tu aplicación de correo…", "success");
+    window.location.href = mailto;
   });
 })();

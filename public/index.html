@@ -139,65 +139,26 @@
         Cuéntame brevemente tu situación y te responderé personalmente.
       </p>
 
-      <form
-        id="contact-form"
-        class="form"
-        method="POST"
-        action="https://formsubmit.co/Jorge.fabregatb@gmail.com"
-        novalidate
-      >
-        <input type="hidden" name="_subject" value="Nuevo mensaje desde jorgefabregat.vercel.app">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_autoresponse" value="Gracias por tu mensaje. Lo he recibido y te responderé personalmente en breve. — Jorge Fabregat">
-        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-
+      <form id="contact-form" class="form" novalidate>
         <div class="field">
           <label for="name">Nombre</label>
           <input type="text" id="name" name="name" required autocomplete="name">
         </div>
 
         <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required autocomplete="email" inputmode="email">
-        </div>
-
-        <div class="field">
           <label for="message">Mensaje</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
+          <textarea id="message" name="message" rows="5" required placeholder="Cuéntame brevemente tu situación…"></textarea>
         </div>
 
         <button type="submit" class="submit">Enviar mensaje</button>
+        <p class="form-hint">Se abrirá tu aplicación de correo con el mensaje listo para enviar.</p>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
 
-      <p class="alt-contact">
-        O, si lo prefieres, escríbeme directamente a
-        <a href="mailto:Jorge.fabregatb@gmail.com" class="email-link-small">Jorge.fabregatb@gmail.com</a>
-      </p>
-
       <p class="copyright">© 2026 Jorge Fabregat</p>
-
-      <div class="legal">
-        <p class="legal-title">Aviso legal</p>
-        <p>
-          Jorge Fabregat presta servicios de consultoría estratégica
-          y coordinación patrimonial. No está registrado en la
-          Comisión Nacional del Mercado de Valores (CNMV) como
-          Empresa de Asesoramiento Financiero (EAF) ni como Asesor
-          Financiero, y por tanto no presta asesoramiento en materia
-          de inversión en el sentido del artículo 140 de la Ley del
-          Mercado de Valores.
-        </p>
-        <p>
-          Los servicios ofrecidos no incluyen recomendaciones
-          personalizadas sobre instrumentos financieros concretos,
-          gestión de carteras ni mediación de seguros. Estas
-          actividades se realizan a través de los profesionales
-          autorizados del cliente, con los que Jorge Fabregat
-          trabaja de forma coordinada.
-        </p>
-      </div>
+      <p class="legal-note">
+        Consultoría estratégica y coordinación patrimonial. Los servicios reservados a entidades autorizadas se prestan a través de los profesionales de referencia del cliente.
+      </p>
     </footer>
 
   </main>
