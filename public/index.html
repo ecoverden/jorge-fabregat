@@ -52,7 +52,7 @@
         profesionales que ya tienes.
       </p>
       <p class="cta">
-        <a href="mailto:Jorge.fabregatb@gmail.com" class="email-link">Jorge.fabregatb@gmail.com</a>
+        <a href="#contacto" class="email-link">Escríbeme →</a>
       </p>
     </section>
 
@@ -135,8 +135,45 @@
 
     <footer id="contacto" class="section footer" aria-labelledby="contacto-title">
       <h2 id="contacto-title">Hablemos.</h2>
-      <p class="cta">
-        <a href="mailto:Jorge.fabregatb@gmail.com" class="email-link">Jorge.fabregatb@gmail.com</a>
+      <p class="intro">
+        Cuéntame brevemente tu situación y te responderé personalmente.
+      </p>
+
+      <form
+        id="contact-form"
+        class="form"
+        method="POST"
+        action="https://formsubmit.co/Jorge.fabregatb@gmail.com"
+        novalidate
+      >
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde jorgefabregat.vercel.app">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_autoresponse" value="Gracias por tu mensaje. Lo he recibido y te responderé personalmente en breve. — Jorge Fabregat">
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="field">
+          <label for="name">Nombre</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email" inputmode="email">
+        </div>
+
+        <div class="field">
+          <label for="message">Mensaje</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="submit">Enviar mensaje</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="alt-contact">
+        O, si lo prefieres, escríbeme directamente a
+        <a href="mailto:Jorge.fabregatb@gmail.com" class="email-link-small">Jorge.fabregatb@gmail.com</a>
       </p>
 
       <p class="copyright">© 2026 Jorge Fabregat</p>
